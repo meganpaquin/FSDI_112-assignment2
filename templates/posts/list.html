@@ -7,21 +7,42 @@
 
 {% block contents %}
 
-    <h1>Posts</h1>
-        {% for post in post_list %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <h6 class="card-subtitle">{{ post.subtitle }}</h6>
-                    <p class="card-text">{{ post.body | truncatechars:500 }}</p>
+    
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <h1>All Posts</h1>
+                {% for post in post_list %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <h6 class="card-subtitle">{{ post.subtitle }}</h6>
+                        <p class="card-text">{{ post.body | truncatechars:200 }}</p>
+                        <a href="{% url 'detail' post.id %}" id="keep-reading">Keep Reading</a>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
+            <div class="col">
+                <h1>Post Categories</h1>
+                    <div class="card">
+                        <div class="card-body">
+                            {% for post in post_list %}
+                            <a class="categories" href="">{{ post.subtitle }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 
 
             <li>
-                <a href="{% url 'detail' post.id %}">{{ post.title }}</a>
+                
             </li>
-        {% endfor %}
+        
 {% endblock contents %}

@@ -8,10 +8,14 @@
 {% block contents %}
 
     <h1>New Post</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create" class="btn btn-success">
-    </form>
+    <div class="container">
+    <div class="card">
+        <form method="POST" class="card-body new-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Create" class="btn btn-success">
+        </form>
+    </div>
+    </div>
     
 {% endblock contents %}
